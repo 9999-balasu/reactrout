@@ -23,8 +23,8 @@ const Login = () => {
         <center>
         <h1>Login Form</h1>
           <form onSubmit={submitHandler}>
-          <input type='text' name="username" value={username} onChange={changeHandler}/> <br/> 
-          <input type='password' name="password" value={password} onChange={changeHandler}/> <br/> 
+          <input className='border-2 border-sky-500 m-1' type='text' name="username" value={username} onChange={changeHandler}/> <br/> 
+          <input className='border-2 border-sky-500 m-1' type='password' name="password" value={password} onChange={changeHandler}/> <br/> 
           <input type='submit' name='submit'/> 
             </form>  
         </center>
