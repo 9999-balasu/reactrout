@@ -10,22 +10,41 @@ const initialState = {
     cart : []
 }
 
-export function reducer(state,action){
+/*export function reducer(state,action){
     switch(action.type){
         case 'ADD_TO_CART' :
             return{ ...state, cart : [...state.cart , action.payload]}
-            case 'DELETE_TIEM_CART':
+            case 'DELETE_ITEM_CART':
                 const newCart = [...state.cart]
                const updatedCart= newCart.filter(item => item .id !== action.payload.id)
                return{
                 ...state ,
                 cart : updatedCart
                }
-                return {}
+                
             default :
             return state
     }
+}*/export function reducer(state, action) {
+    switch (action.type) {
+        case 'ADD_TO_CART':
+            return {
+                ...state,
+                cart: [...state.cart, action.payload],
+            };
+
+        case 'DELETE_ITEM_CART':
+            const filteredCart = state.cart.filter(item => item.id !== action.payload.id);
+            return {
+                ...state,
+                cart: filteredCart,
+            };
+
+        default:
+            return state;
+    }
 }
+
 
 export function CartProvider({children}){
 

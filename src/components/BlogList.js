@@ -7,7 +7,7 @@
 //import lion from './image/lion 1.jpg'
 //import tree from './image/tree 1.jpg'
 
-
+import React from "react";
 
  const data=[
     {
@@ -80,4 +80,30 @@
   ]
   
 
-export default data;
+
+
+
+ // Assuming the data is in the same folder
+
+const BlogList = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-8 text-center">Blog List</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {data.map((blog) => (
+          <div key={blog.id} className="border rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
+            <img
+              src={blog.img}
+              alt={blog.title}
+              className="w-full h-48 object-cover rounded-md mb-4"
+            />
+            <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
+            <p className="text-gray-600">{blog.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BlogList;
