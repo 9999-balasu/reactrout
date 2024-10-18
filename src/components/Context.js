@@ -55,7 +55,7 @@ export function useCartState(){
 return useContext(CartStateContext)
 }*/
 
-import React, { useReducer, useContext } from 'react';
+ import React, { useReducer, useContext } from 'react';
 
 // Create the context for cart state and dispatch
 export const CartStateContext = React.createContext(null);
@@ -142,3 +142,6 @@ export function useDispatch() {
 export function useCartState() {
     return useContext(CartStateContext); // Correctly exporting useCartState
 }
+
+
+
