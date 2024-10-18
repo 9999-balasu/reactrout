@@ -1,576 +1,4 @@
 
-
-/*import { useDispatch } from "./Context"
-
-
-
-
-const ProductCart = ({id,title,price,image,rating}) => {
-   //const dispatch = useContext(CartDispatchContext)
-   const dispatch = useDispatch();
-  return (
-    <div style={{display:"flex", flexDirection:"row"}}>
-      <div>
-         <img src={image} alt="" width={200} height={200}/>
-         </div> 
-      <div>
-        <h1>{title}</h1>
-        <h1>{price}</h1>
-        <h1>{rating}</h1>
-      
-
-    
-
-
-<button
-                    className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-                    onClick={() =>
-                        dispatch({
-                            type: 'DELETE_ITEM_CART',
-                            payload: { id, title, price, image, rating }
-                        })
-                    }
-                >
-                    Delete
-                </button>
-
-
-
-
-        </div> 
-    </div>
-  )
-}
-
-export default ProductCart;*/
-
-
-/* 2import { useDispatch } from "./Context";
-
-const ProductCart = ({ id, title, price, image, rating, quantity }) => {
-   const dispatch = useDispatch();
-
-   return (
-     <div style={{ display: "flex", flexDirection: "row" }}>
-       <div>
-         <img src={image} alt="" width={200} height={200} />
-       </div>
-       <div>
-         <h1>{title}</h1>
-         <h1>${price}</h1>
-         <h1>{rating}</h1>
-         <h1>Quantity: {quantity}</h1>
-
-         <div style={{ display: "flex", alignItems: "center" }}>
-           <button
-             className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-             onClick={() =>
-               dispatch({
-                 type: 'INCREMENT_ITEM_QUANTITY',
-                 payload: { id },
-               })
-             }
-           >
-             +
-           </button>
-
-           <button
-             className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 ml-2"
-             onClick={() =>
-               dispatch({
-                 type: 'DECREMENT_ITEM_QUANTITY',
-                 payload: { id },
-               })
-             }
-           >
-             -
-           </button>
-         </div>
-
-         <button
-           className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-           onClick={() =>
-             dispatch({
-               type: 'DELETE_ITEM_CART',
-               payload: { id },
-             })
-           }
-         >
-           Delete
-         </button>
-       </div>
-     </div>
-   );
-};
-
-export default ProductCart;*/
-
-
- /*import { useDispatch, useCartState } from './Context'; // Correct import
-
-const ProductCart = ({ id, title, price, image, rating }) => {
-    const dispatch = useDispatch();
-    const { cart } = useCartState(); // Accessing the cart state
-
-    const product = cart.find(item => item.id === id);
-    const quantity = product ? product.quantity : 0;
-
-    return (
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div>
-                <img src={image} alt={title} width={200} height={200} />
-            </div>
-            <div>
-                <h1>{title}</h1>
-                <h1>${price}</h1>
-                <h1>{rating}</h1>
-                <h1>Quantity: {quantity}</h1>
-
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <button
-                        className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-                        onClick={() =>
-                            dispatch({
-                                type: 'INCREMENT_ITEM_QUANTITY',
-                                payload: { id },
-                            })
-                        }
-                    >
-                        +
-                    </button>
-
-                    <button
-                        className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 ml-2"
-                        onClick={() =>
-                            dispatch({
-                                type: 'DECREMENT_ITEM_QUANTITY',
-                                payload: { id },
-                            })
-                        }
-                    >
-                        -
-                    </button>
-                </div>
-
-                <button
-                    className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                    onClick={() =>
-                        dispatch({
-                            type: 'DELETE_ITEM_CART',
-                            payload: { id },
-                        })
-                    }
-                >
-                    Delete
-                </button>
-            </div>
-        </div>
-    );
-};
-
-export default ProductCart;*/
-
-
-
-
-/*2 import { useDispatch, useCartState } from './Context'; // Correct import
-
-const ProductCart = ({ id, title, price, image, rating }) => {
-    const dispatch = useDispatch();
-    const { cart } = useCartState(); // Accessing the cart state
-
-    // Calculate subtotal, shipping fee, and total
-    const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const shippingFee = 5.00; // Example static shipping fee
-    const total = subtotal + shippingFee;
-
-    const product = cart.find(item => item.id === id);
-    const quantity = product ? product.quantity : 0;
-
-    const handleCheckout = () => {
-        // Add your checkout logic here, like navigating to a checkout page
-        alert('Proceeding to checkout');
-    };
-
-    if (cart.length === 0) {
-        return <h2>Your cart is empty.</h2>;
-    }
-
-    return (
-        <div>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <div>
-                    <img src={image} alt={title} width={200} height={200} />
-                </div>
-                <div>
-                    <h1>{title}</h1>
-                    <h1>${price}</h1>
-                    <h1>{rating}</h1>
-                    <h1>Quantity: {quantity}</h1>
-
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <button
-                            className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-                            onClick={() =>
-                                dispatch({
-                                    type: 'INCREMENT_ITEM_QUANTITY',
-                                    payload: { id },
-                                })
-                            }
-                        >
-                            +
-                        </button>
-
-                        <button
-                            className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 ml-2"
-                            onClick={() =>
-                                dispatch({
-                                    type: 'DECREMENT_ITEM_QUANTITY',
-                                    payload: { id },
-                                })
-                            }
-                        >
-                            -
-                        </button>
-                    </div>
-
-                    <button
-                        className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                        onClick={() =>
-                            dispatch({
-                                type: 'DELETE_ITEM_CART',
-                                payload: { id },
-                            })
-                        }
-                    >
-                        Delete
-                    </button>
-                </div>
-            </div>
-
-            {/* Cart Summary */
-           /* <div style={{ marginTop: '20px' }}>
-                <h2>Cart Summary</h2>
-                <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
-                <h3>Shipping Fee: ${shippingFee.toFixed(2)}</h3>
-                <h3>Total: ${total.toFixed(2)}</h3>
-
-                <button
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    onClick={handleCheckout}
-                >
-                    Proceed to Checkout
-                </button>
-            </div>
-        </div>
-    );
-};
-
-export default ProductCart;*/
-
-
-/*import React, { useState } from 'react';
-import { useDispatch, useCartState } from './Context'; // Correct import
-
-const ProductCart = ({ id, title, price, image, rating }) => {
-    const dispatch = useDispatch();
-    const { cart } = useCartState(); // Accessing the cart state
-
-    // State for delivery information
-    const [deliveryAddress, setDeliveryAddress] = useState('');
-    const [contactNumber, setContactNumber] = useState('');
-
-    // Calculate subtotal, shipping fee, and total
-    const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const shippingFee = 5.00; // Example static shipping fee
-    const total = subtotal + shippingFee;
-
-    const product = cart.find(item => item.id === id);
-    const quantity = product ? product.quantity : 0;
-
-    const handleCheckout = () => {
-        // Add your checkout logic here, like navigating to a checkout page
-        alert('Proceeding to checkout');
-    };
-
-    const handlePlaceOrder = () => {
-        if (!deliveryAddress || !contactNumber) {
-            alert('Please fill in all delivery information.');
-            return;
-        }
-        
-        // Here you can add logic to place the order, e.g., send to backend
-        console.log('Order placed:', {
-            cart,
-            total,
-            deliveryAddress,
-            contactNumber,
-        });
-
-        alert('Your order has been placed successfully!');
-        // Optionally, you can clear the cart here after placing the order
-        // dispatch({ type: 'CLEAR_CART' });
-    };
-
-    if (cart.length === 0) {
-        return <h2>Your cart is empty.</h2>;
-    }
-
-    return (
-        <div>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <div>
-                    <img src={image} alt={title} width={200} height={200} />
-                </div>
-                <div>
-                    <h1>{title}</h1>
-                    <h1>${price}</h1>
-                    <h1>{rating}</h1>
-                    <h1>Quantity: {quantity}</h1>
-
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <button
-                            className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-                            onClick={() =>
-                                dispatch({
-                                    type: 'INCREMENT_ITEM_QUANTITY',
-                                    payload: { id },
-                                })
-                            }
-                        >
-                            +
-                        </button>
-
-                        <button
-                            className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 ml-2"
-                            onClick={() =>
-                                dispatch({
-                                    type: 'DECREMENT_ITEM_QUANTITY',
-                                    payload: { id },
-                                })
-                            }
-                        >
-                            -
-                        </button>
-                    </div>
-
-                    <button
-                        className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                        onClick={() =>
-                            dispatch({
-                                type: 'DELETE_ITEM_CART',
-                                payload: { id },
-                            })
-                        }
-                    >
-                        Delete
-                    </button>
-                </div>
-            </div>
-
-            {/* Cart Summary */
-            /*<div style={{ marginTop: '20px' }}>
-                <h2>Cart Summary</h2>
-                <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
-                <h3>Shipping Fee: ${shippingFee.toFixed(2)}</h3>
-                <h3>Total: ${total.toFixed(2)}</h3>
-
-                {/* Delivery Information Section */
-               /* <div style={{ marginTop: '20px' }}>
-                    <h2>Delivery Information</h2>
-                    <input
-                        type="text"
-                        placeholder="Delivery Address"
-                        value={deliveryAddress}
-                        onChange={(e) => setDeliveryAddress(e.target.value)}
-                        className="border rounded px-2 py-1"
-                    />
-                    <br />
-                    <input
-                        type="text"
-                        placeholder="Contact Number"
-                        value={contactNumber}
-                        onChange={(e) => setContactNumber(e.target.value)}
-                        className="border rounded px-2 py-1 mt-2"
-                    />
-                </div>
-
-                <button
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    onClick={handlePlaceOrder}
-                >
-                    Place Order
-                </button>
-            </div>
-        </div>
-    );
-};
-
-export default ProductCart;*/
-
-
-
-
-/*import React, { useState } from 'react';
-import { useDispatch, useCartState } from './Context'; // Correct import
-
-const ProductCart = () => {
-    const dispatch = useDispatch();
-    const { cart } = useCartState(); // Accessing the cart state
-
-    // State for delivery information
-    const [deliveryAddress, setDeliveryAddress] = useState('');
-    const [contactNumber, setContactNumber] = useState('');
-    const [orders, setOrders] = useState([]); // State to hold placed orders
-
-    // Calculate subtotal, shipping fee, and total
-    const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const shippingFee = 5.00; // Example static shipping fee
-    const total = subtotal + shippingFee;
-
-    const handlePlaceOrder = () => {
-        if (!deliveryAddress || !contactNumber) {
-            alert('Please fill in all delivery information.');
-            return;
-        }
-
-        // Create an order object
-        const order = {
-            cart,
-            total,
-            deliveryAddress,
-            contactNumber,
-            orderDate: new Date().toLocaleString(), // Add date of order
-        };
-
-        // Update orders state with new order
-        setOrders([...orders, order]);
-
-        // Optionally clear the cart
-        // dispatch({ type: 'CLEAR_CART' });
-
-        alert('Your order has been placed successfully!');
-
-        // Clear delivery information
-        setDeliveryAddress('');
-        setContactNumber('');
-    };
-
-    if (cart.length === 0) {
-        return <h2>Your cart is empty.</h2>;
-    }
-
-    return (
-        <div>
-            <h1>Shopping Cart</h1>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-                {cart.map(item => (
-                    <div key={item.id} style={{ marginRight: '20px' }}>
-                        <img src={item.image} alt={item.title} width={100} height={100} />
-                        <h2>{item.title}</h2>
-                        <h3>${item.price}</h3>
-                        <h3>Quantity: {item.quantity}</h3>
-
-                        <button
-                            className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
-                            onClick={() =>
-                                dispatch({ type: 'INCREMENT_ITEM_QUANTITY', payload: { id: item.id } })
-                            }
-                        >
-                            +
-                        </button>
-
-                        <button
-                            className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 ml-2"
-                            onClick={() =>
-                                dispatch({ type: 'DECREMENT_ITEM_QUANTITY', payload: { id: item.id } })
-                            }
-                        >
-                            -
-                        </button>
-
-                        <button
-                            className="mt-2 bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                            onClick={() =>
-                                dispatch({ type: 'DELETE_ITEM_CART', payload: { id: item.id } })
-                            }
-                        >
-                            Delete
-                        </button>
-                    </div>
-                ))}
-            </div>
-
-            {/* Cart Summary */
-           /* <div style={{ marginTop: '20px' }}>
-                <h2>Cart Summary</h2>
-                <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
-                <h3>Shipping Fee: ${shippingFee.toFixed(2)}</h3>
-                <h3>Total: ${total.toFixed(2)}</h3>
-
-                {/* Delivery Information Section */
-               /* <div style={{ marginTop: '20px' }}>
-                    <h2>Delivery Information</h2>
-                    <input
-                        type="text"
-                        placeholder="Delivery Address"
-                        value={deliveryAddress}
-                        onChange={(e) => setDeliveryAddress(e.target.value)}
-                        className="border rounded px-2 py-1"
-                    />
-                    <br />
-                    <input
-                        type="text"
-                        placeholder="Contact Number"
-                        value={contactNumber}
-                        onChange={(e) => setContactNumber(e.target.value)}
-                        className="border rounded px-2 py-1 mt-2"
-                    />
-                </div>
-
-                <button
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    onClick={handlePlaceOrder}
-                >
-                    Place Order
-                </button>
-            </div>
-
-            {/* My Orders Section */
-           /* <div style={{ marginTop: '40px' }}>
-                <h2>My Orders</h2>
-                {orders.length === 0 ? (
-                    <p>No orders placed yet.</p>
-                ) : (
-                    orders.map((order, index) => (
-                        <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-                            <h3>Order #{index + 1}</h3>
-                            <h4>Order Date: {order.orderDate}</h4>
-                            <h4>Delivery Address: {order.deliveryAddress}</h4>
-                            <h4>Contact Number: {order.contactNumber}</h4>
-                            <h4>Total: ${order.total.toFixed(2)}</h4>
-                            <h4>Items:</h4>
-                            <ul>
-                                {order.cart.map((item) => (
-                                    <li key={item.id} style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={item.image} alt={item.title} width={50} height={50} style={{ marginRight: '10px' }} />
-                                        <span>{item.title} - ${item.price} x {item.quantity}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))
-                )}
-            </div>
-        </div>
-    );
-};
-
-export default ProductCart;*/
-
-
-
-
 import React, { useState } from 'react';
 import { useDispatch, useCartState } from './Context'; // Correct import
 
@@ -582,6 +10,7 @@ const ProductCart = () => {
     const [deliveryAddress, setDeliveryAddress] = useState('');
     const [contactNumber, setContactNumber] = useState('');
     const [orders, setOrders] = useState([]); // State to hold placed orders
+    const [paymentMethod, setPaymentMethod] = useState(''); // State for selected payment method
 
     // Calculate subtotal, shipping fee, and total
     const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -594,12 +23,18 @@ const ProductCart = () => {
             return;
         }
 
+        if (!paymentMethod) {
+            alert('Please select a payment method.');
+            return;
+        }
+
         // Create an order object
         const order = {
             cart,
             total,
             deliveryAddress,
             contactNumber,
+            paymentMethod, // Add payment method to order
             orderDate: new Date().toLocaleString(), // Add date of order
         };
 
@@ -609,11 +44,16 @@ const ProductCart = () => {
         // Optionally clear the cart
         // dispatch({ type: 'CLEAR_CART' });
 
-        alert('Your order has been placed successfully!');
+        alert(`Your order has been placed successfully! Payment via ${paymentMethod}.`);
 
-        // Clear delivery information
+        // Clear delivery information and payment method
         setDeliveryAddress('');
         setContactNumber('');
+        setPaymentMethod('');
+    };
+
+    const handlePaymentSelection = (method) => {
+        setPaymentMethod(method);
     };
 
     if (cart.length === 0) {
@@ -689,11 +129,42 @@ const ProductCart = () => {
                     />
                 </div>
 
+                {/* Payment Method Section */}
+                <div className="mt-4">
+                    <h2 className="text-lg font-bold mb-2">Select Payment Method</h2>
+                    <div className="flex space-x-4">
+                        <button
+                            className={`px-4 py-2 rounded ${
+                                paymentMethod === 'Paytm' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                            }`}
+                            onClick={() => handlePaymentSelection('Paytm')}
+                        >
+                            Paytm
+                        </button>
+                        <button
+                            className={`px-4 py-2 rounded ${
+                                paymentMethod === 'PhonePe' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                            }`}
+                            onClick={() => handlePaymentSelection('PhonePe')}
+                        >
+                            PhonePe
+                        </button>
+                        <button
+                            className={`px-4 py-2 rounded ${
+                                paymentMethod === 'Stripe' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                            }`}
+                            onClick={() => handlePaymentSelection('Stripe')}
+                        >
+                            Stripe
+                        </button>
+                    </div>
+                </div>
+
                 <button
                     className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
                     onClick={handlePlaceOrder}
                 >
-                    Place Order
+                    Proceed to Payment
                 </button>
             </div>
 
@@ -709,6 +180,7 @@ const ProductCart = () => {
                             <h4>Order Date: {order.orderDate}</h4>
                             <h4>Delivery Address: {order.deliveryAddress}</h4>
                             <h4>Contact Number: {order.contactNumber}</h4>
+                            <h4>Payment Method: {order.paymentMethod}</h4>
                             <h4>Total: <span className="font-semibold">${order.total.toFixed(2)}</span></h4>
                             <h4 className="font-bold mt-2">Items:</h4>
                             <ul className="list-disc ml-5">
@@ -728,3 +200,10 @@ const ProductCart = () => {
 };
 
 export default ProductCart;
+
+
+
+                   
+      
+                                
+                       
